@@ -1,0 +1,46 @@
+<html>
+<head>
+  <style>
+    #content table {
+      background-color:red;
+    }
+    #lastGames table {
+      border:solid 2px green;
+    }
+  </style>
+  <script language="JavaScript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script language="JavaScript">
+    $(document).ready(function(){
+      $("td.name").text($("div.sometext").text());
+      $.getJSON( "data.php", function( data ) {
+        var items = [];
+        $.each( data, function( key, val ) {
+          $("#lastGames table.games").append("<tr>\
+          <td class='name'>"+val.name+"</td>\
+          <td class='code'>"+val.code+"</td>\
+          </tr>");
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+<div id="content">
+   <table class="games">
+       <tr>
+           <td class="name">First game</td>
+           <td class="code">first_game</td>
+       </tr>
+   </table>
+</div>
+<div id="lastGames">
+   <table class="games">
+       <tr>
+           <td class="name">Game 1</td>
+           <td class="code">game_1</td>
+       </tr>
+   </table>
+</div>
+<div class="sometext" id="sometext">is so fun!</div>
+</body>
+</html>
